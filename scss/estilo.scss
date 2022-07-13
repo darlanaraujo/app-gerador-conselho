@@ -1,11 +1,18 @@
 @import 'padroes';
 
+@mixin mobile {
+    @media (max-width: 550px) {
+        @content;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
+    
 }
 
 .page {
@@ -15,31 +22,67 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .modal {
-    width: 540px;
-    height: 330px;
+    min-width: 340px;
+    max-width: 540px;
+    min-height: 330px;
     background-color: $corModal;
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     position: relative;
+    transition: 1s all;
+    margin: 10px;
 
-    .index {
-        color: $corBotao;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 14px;
-        margin-bottom: 40px;
+    @include mobile {
+        padding: 40px 20px;
     }
 
-    .msg {
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 1.2;
-        color: #fff;
-        margin-bottom: 40px;
+    .wrapper {
+        animation: suave-up 2s forwards;
+        display: grid;
+        justify-items: center;
+        .index {
+            color: $corBotao;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+    
+        .msg {
+            
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        .linha {
+            margin-bottom: 20px;
+            display: flex;
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        .linha-mobile {
+            margin-bottom: 20px;
+            display: none;
+
+            @include mobile {
+                display: flex;
+            }
+        }
+
+        &.active {
+            animation: suave-down 2s forwards;
+        }
     }
 
     .btn-gerar {
@@ -61,6 +104,25 @@
 
         &:hover {
             box-shadow: 1px 1px 40px rgba(49, 255, 178, .90);
+        }
+    }
+}
+
+.footer {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+    color: #fff;
+
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+        line-height: 30px;
+
+        & a {
+            color: hsla(0, 0%, 100%, 0.511);
         }
     }
 }

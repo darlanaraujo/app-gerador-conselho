@@ -1,3 +1,25 @@
 $corFundo: rgb(32, 38, 49);
 $corModal: rgb(49, 58, 72);
 $corBotao: rgb(49, 255, 178);
+
+@keyframes suave-up {
+    from {
+        transform: translate(0px, -50px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+}
+
+@keyframes suave-down {
+    from {
+        transform: translate(0px, 50px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+}
